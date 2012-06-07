@@ -1,0 +1,17 @@
+Index: gdal-grass/Makefile.in
+===================================================================
+--- gdal-grass.orig/Makefile.in	2011-02-24 15:15:21.000000000 +0100
++++ gdal-grass/Makefile.in	2011-02-24 16:25:47.000000000 +0100
+@@ -42,10 +42,10 @@
+ 
+ 
+ $(GLIBNAME):	grass57dataset.o
+-	$(LD_SHARED) grass57dataset.o $(LIBS) -o $(GLIBNAME)
++	$(LD_SHARED) grass57dataset.o $(LIBS) -o $(GLIBNAME) -Wl,-rpath,/usr/lib/grass64/lib
+ 
+ $(OLIBNAME):	ogrgrassdriver.o ogrgrassdatasource.o ogrgrasslayer.o 
+-	$(LD_SHARED) ogrgrassdriver.o ogrgrassdatasource.o ogrgrasslayer.o $(LIBS) -o $(OLIBNAME)
++	$(LD_SHARED) ogrgrassdriver.o ogrgrassdatasource.o ogrgrasslayer.o $(LIBS) -o $(OLIBNAME) -Wl,-rpath,/usr/lib/grass64/lib
+ 
+ %.o:	%.cpp
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
